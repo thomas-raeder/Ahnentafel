@@ -1,6 +1,7 @@
 public class Ahnentafel {
 
-    BinaryTree<Person> ahnentafel;
+
+    private BinaryTree<Person> ahnentafel;
 
     public Ahnentafel(){
         BinaryTree<Person> b1 = new BinaryTree<Person>(new Person("Bouvier", "Jacqueline", 'w'));
@@ -12,11 +13,22 @@ public class Ahnentafel {
         ahnentafel = new BinaryTree<>(new Person("Simpson", "Lisa", 'w'), b3, b6);
     }
 
+    public BinaryTree<Person> getAhnentafel() {
+        return ahnentafel;
+    }
 
-
-
+    public void preorder(BinaryTree<Person> b){
+        System.out.println(b.getContent());
+        if (!b.getLeftTree().isEmpty()){
+            preorder(b.getLeftTree());
+        }
+        if (!b.getRightTree().isEmpty()){
+            preorder(b.getRightTree());
+        }
+    }
 
     public static void main(String[] args) {
         Ahnentafel program = new Ahnentafel();
+        program.preorder(program.getAhnentafel());
     }
 }
